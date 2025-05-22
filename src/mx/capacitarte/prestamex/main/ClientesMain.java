@@ -22,7 +22,7 @@ public class ClientesMain {
 		System.out.println("Termina carga de clientes");
 		
 		
-		
+		// se invoca el metodo para mostrar el menu
 		mostrarMenu();
 		
 		/*clienteService.mostrarClientes(clientesCargados);
@@ -74,6 +74,7 @@ public class ClientesMain {
 			System.out.println("Opcion invalida");
 		}
 		
+		// se invoca el metodo para mostrar el menu
 		mostrarMenu();
 	}
 
