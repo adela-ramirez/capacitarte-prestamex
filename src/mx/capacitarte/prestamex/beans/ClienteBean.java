@@ -107,5 +107,10 @@ public class ClienteBean {
 				+ correoElectronico + ", domicilio=" + domicilio + ", vigencia=" + vigencia + "]";
 	}
 	
+	public String salidaArchivoPlano() {
+		return numeroCliente + "|" + nombre + "|" + apellidoPaterno + "|" + apellidoMaterno + "|" +
+				fechaNacimiento + "|" + genero + "|" + rfc + "|" + telefono + "|" + correoElectronico + "|" +
+				domicilio + "|" + (vigencia ? "1" : "0") + "\n";
+	}
 	
 }

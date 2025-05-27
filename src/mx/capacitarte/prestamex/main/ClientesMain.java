@@ -69,7 +69,45 @@ public class ClientesMain {
 			clienteService.mostrarClientes(clientesEncontrados);
 			break;
 		case 3:
-			System.out.println("ingrese nombre del cliente:\n");
+			System.out.println("ingrese el número del cliente");
+			Integer numCliente = scanner.nextInt();
+			System.out.println("ingrese el nombre del cliente");
+			String nombre = scanner.next();
+			System.out.println("ingrese apellido paterno");
+			String apellidoPaterno = scanner.next();
+			System.out.println("ingrese apellido materno");
+			String apellidoMaterno = scanner.next();
+			System.out.println("ingrese fecha de nacimiento");
+			String fechaNacimiento = scanner.next();
+			System.out.println("ingrese genero");
+			String genero = scanner.next();
+			System.out.println("ingrese rfc");
+			String rfc = scanner.next();
+			System.out.println("ingrese telefono");
+			String telefono = scanner.next();
+			System.out.println("ingrese correo electronico");
+			String correoElectronico = scanner.next();
+			System.out.println("domicilio");
+			String domiclio = scanner.next();
+			System.out.println("vigencia");
+			String vigencia = scanner.next();
+			
+			ClienteBean clienteAgregar = new ClienteBean();
+			clienteAgregar.setNumeroCliente(numCliente);
+			clienteAgregar.setNombre(nombre);
+			clienteAgregar.setApellidoPaterno(apellidoPaterno);
+			clienteAgregar.setApellidoMaterno(apellidoMaterno);
+			clienteAgregar.setFechaNacimiento(fechaNacimiento);
+			clienteAgregar.setGenero(genero);
+			clienteAgregar.setRfc(rfc);
+			clienteAgregar.setTelefono(telefono);
+			clienteAgregar.setCorreoElectronico(correoElectronico);
+			clienteAgregar.setDomicilio(domiclio);
+			clienteAgregar.setVigencia(vigencia.equals("1") ? true : false);
+			
+			Boolean respuesta = clienteService.agregarClientes(clienteAgregar);
+			System.out.println(respuesta ? "El cliente fue agregado correctamente" : "Ocurrió un error al agregar al cliente");
+			
 			break;
 		case 4:
 			System.out.println("Termina programa");

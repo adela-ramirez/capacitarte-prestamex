@@ -2,6 +2,8 @@ package mx.capacitarte.prestamex.files;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -59,4 +61,33 @@ public class ClientesFiles {
 		}
 
 		// agregar cliente a archivo clientes
+		// Boolean: true o false
+		public Boolean agregarCliente(ClienteBean clienteNuevoBean) {
+			//Recuperar a todos los clientes actuales en el archivo: 1
+			System.out.println("Recuperando a todos los clientes actuales en el archivo");
+			List<ClienteBean> clientesActuales = leerArchivoClientes();
+			
+			//Agregar cliente nuevo a la lista de clientes actuales: 2
+			System.out.println("Agregando cliente nuevo a la lista");
+			clientesActuales.add(clienteNuevoBean);
+			
+			//Escribir en el archivo
+			try {
+				FileWriter myWriter = new FileWriter(Constantes.RUTA_ARCHIVO_PRESTAMEX_CLIENTES);
+				
+				for (ClienteBean clienteBean : clientesActuales) {
+					System.out.println(":::: Agregando cliente");
+					myWriter.write(clienteBean.salidaArchivoPlano());
+				}
+				System.out.println("Terminó de agregar cliente al archivo");
+				myWriter.close();
+			}catch (IOException e) {
+				System.out.println("a ocurrido una excepcion");
+				e.printStackTrace();
+				return false;
+			}
+			
+			return true;
+		}
+		
 }
