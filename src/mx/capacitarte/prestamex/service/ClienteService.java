@@ -1,7 +1,11 @@
 package mx.capacitarte.prestamex.service;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.sun.java_cup.internal.runtime.Scanner;
 
 import mx.capacitarte.prestamex.beans.ClienteBean;
 import mx.capacitarte.prestamex.beans.EmpleadoBean;
@@ -69,5 +73,34 @@ public class ClienteService {
 				}
 				
 				return clientesCoincidentes;
+			}
+
+			public List<ClienteBean> agregarClientes(String nombreBuscar){
+				ClientesFiles clientesFiles = new ClientesFiles();
+				List<ClienteBean> clientes =clientesFiles.leerArchivoClientes();
+
+				System.out.println("ingrese el nombre del cliente");
+				String nombre = scanner.next();
+				System.out.println("ingrese apellido paterno");
+				String apellidoPaterno = scanner.next();
+				System.out.println("ingrese apellido materno");
+				String apellidoMaterno = scanner.next();
+				System.out.println("ingrese fecha de nacimiento");
+				String fechaNacimiento = scanner.next();
+				System.out.println("ingrese genero");
+				String genero = scanner.next();
+				System.out.println("ingrese rfc");
+				String rfc = scanner.next();
+				System.out.println("ingrese telefono");
+				String telefono = scanner.next();
+				System.out.println("ingrese correo electronico");
+				String correoElectronico = scanner.next();
+				System.out.println("domicilio");
+				String domiclio = scanner.next();
+				System.out.println("vigencia");
+				String vigencia = scanner.next();
+				
+				clientes.add(clienteBean);
+				
 			}
 }

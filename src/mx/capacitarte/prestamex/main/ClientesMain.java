@@ -43,7 +43,8 @@ public class ClientesMain {
 		System.out.println("*****  Menu *****");
 		System.out.println("1.- Buscar por nombre");
 		System.out.println("2.- Buscar por número de cliente");
-		System.out.println("3.- Salir");
+		System.out.println("3.- Agregar cliente");
+		System.out.println("4.- Salir");
 		Scanner scanner = new Scanner(System.in);
 		int opcionElegida = scanner.nextInt();
 		List<ClienteBean> clientesEncontrados = new ArrayList<>();
@@ -68,6 +69,9 @@ public class ClientesMain {
 			clienteService.mostrarClientes(clientesEncontrados);
 			break;
 		case 3:
+			System.out.println("ingrese nombre del cliente:\n");
+			break;
+		case 4:
 			System.out.println("Termina programa");
 			System.exit(0);
 		default:
