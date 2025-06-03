@@ -1,19 +1,11 @@
-/**
- * 
- */
 package mx.capacitarte.prestamex.service;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import mx.capacitarte.prestamex.beans.EmpleadoBean;
 import mx.capacitarte.prestamex.files.EmpleadosFiles;
 
-/**
- * 
- */
 public class EmpleadoService {
 
 	//Agreguemos los métodos con las funcionalidades
@@ -58,9 +50,9 @@ public class EmpleadoService {
 				return;
 			}
 			
-			System.out.println("Los estudiantes son:");
+			System.out.println(empleados.size() == 1 ? "\nEl empleado encontrado es:" : "\nLos empleados encontrados son:");
 			for (EmpleadoBean empleadoBean : empleados) {
-				System.out.println(empleadoBean.toString());
+				System.out.println(empleadoBean.mostraInfoEmpleado());
 			}
 			System.out.println("=============================================");
 			

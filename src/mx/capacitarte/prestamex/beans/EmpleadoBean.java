@@ -132,6 +132,19 @@ public class EmpleadoBean {
 				+ fechaIngreso + ", sueldo=" + sueldo + ", vigencia=" + vigencia + "]";
 	}
     
-    
+    public String mostraInfoEmpleado() {
+    	return 
+		    "Numero de empleado: " + numeroEmpleado +
+		    "\nNombre empleado:    " + nombre + " " + apellidoPaterno + " " + apellidoMaterno +
+		    "\nFecha de nacimiento: " + fechaNacimiento +
+		    "\nDepartamente:       " + departamento + 
+		    "\nPuesto:             " + puesto + 
+		    "\nGenero:             " + (genero.equals("F") ? "FEMENINO" : genero.equals("M") ? "MASCULINO" : " ") + 
+		    "\nFecha de ingreso:   " + fechaIngreso +
+		    "\nSueldo mensual:     " + sueldo +
+		    "\nVigencia:           " + (vigencia ? "Vigente" : "No Vigente") + 
+		    "\n\n";
+    	
+    }
 
 }
