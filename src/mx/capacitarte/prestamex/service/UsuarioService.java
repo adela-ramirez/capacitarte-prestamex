@@ -4,21 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mx.capacitarte.prestamex.beans.ClienteBean;
+import mx.capacitarte.prestamex.beans.EmpleadoBean;
 import mx.capacitarte.prestamex.beans.UsuarioBean;
+import mx.capacitarte.prestamex.files.ClientesFiles;
+import mx.capacitarte.prestamex.files.EmpleadosFiles;
+import mx.capacitarte.prestamex.files.UsuariosFile;
 
 public class UsuarioService {
 	
-	public List<UsuarioBean> cargarUsuarios(){
-		List<UsuarioBean> usuariosBean = new ArrayList<>();
-		
-		UsuarioBean usuarioBean1 = new UsuarioBean(001, "Alicia", "Alva80", true , "vigente");
-		UsuarioBean usuarioBean2 = new UsuarioBean(002, "Adrian", "Martinez85", true , "vigente");
-		
-		usuariosBean.add(usuarioBean1);
-		usuariosBean.add(usuarioBean2);
-		usuariosBean.add(usuarioBean2);
-		return usuariosBean;
-	}
 	
 	//Mostrar usuarios
 	public void mostrarUsuarios(List<UsuarioBean> usuarios) {
@@ -35,9 +28,13 @@ public class UsuarioService {
 		
 	}
 	
-	public List<UsuarioBean> buscarUsuariosPorNombre(List<UsuarioBean> usuarios, String nombreBuscar){
+	public List<UsuarioBean> buscarUsuariosPorNombre(String nombreBuscar){
 		List<UsuarioBean> usuariosCoincidentes = new ArrayList<>();
 
+		// aqui se debe invovar el metodo de leer los usuarios del archivo
+		UsuariosFile usuariosFiles = new UsuariosFile();
+		List<UsuarioBean> usuarios =usuariosFiles.leerArchivoUsuarios();
+		
 		for (UsuarioBean usuarioBean : usuarios) {
 			if(usuarioBean.getUsuario().toUpperCase().equals(nombreBuscar.toUpperCase())) {
 				usuariosCoincidentes.add(usuarioBean);
@@ -48,20 +45,28 @@ public class UsuarioService {
 	}
 	
 	
-	public List<UsuarioBean> buscarUsuario(List<UsuarioBean> usuarios, Integer numeroEmpleado){
+	public List<UsuarioBean> buscarUsuario(Integer numeroUsuario){
 		List<UsuarioBean> usuariosCoincidentes = new ArrayList<>();
-
+		
+// aqui se debe invovar el metodo de leer los usuarios del archivo
+		UsuariosFile usuariosFiles = new UsuariosFile();
+		List<UsuarioBean> usuarios =usuariosFiles.leerArchivoUsuarios();
+		
 		for (UsuarioBean usuarioBean : usuarios) {
-			if(usuarioBean.getNumeroEmpleado().intValue() == numeroEmpleado.intValue()) {
+			if(usuarioBean.getNumeroUsuario().intValue() == numeroUsuario.intValue()) {
 				usuariosCoincidentes.add(usuarioBean);
 			}
 		}
 		
 		return usuariosCoincidentes;
 	}
-	public List<UsuarioBean> validarUsuario(List<UsuarioBean> usuarios, String usuario, String password){
+	public List<UsuarioBean> validarUsuario(String usuario, String password){
 		List<UsuarioBean> usuariosCoincidentes = new ArrayList<>();
 
+	// aqui se debe invovar el metodo de leer los usuarios del archivo
+		UsuariosFile usuariosFiles = new UsuariosFile();
+		List<UsuarioBean> usuarios =usuariosFiles.leerArchivoUsuarios();
+		
 		for (UsuarioBean usuarioBean : usuarios) {
 			if(usuarioBean.getUsuario().equals(usuario) && usuarioBean.getPassword().equals(password)) {
 				usuariosCoincidentes.add(usuarioBean);
@@ -73,6 +78,14 @@ public class UsuarioService {
 		return usuariosCoincidentes;
 	}
 	
-	
+	public Boolean agregarUsuarios (UsuarioBean usuarioBean){
+		UsuariosFile usuariosFile = new UsuariosFile();
+		Boolean resultadoAgregarUsuario = usuariosFile.agregarUsuario(usuarioBean);
+
+		System.out.println("El resultado de agregar usuario fue: " + resultadoAgregarUsuario);
+
+		return resultadoAgregarUsuario;
+
+	}
 
 }

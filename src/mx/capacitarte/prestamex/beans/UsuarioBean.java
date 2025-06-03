@@ -2,7 +2,7 @@ package mx.capacitarte.prestamex.beans;
 
 public class UsuarioBean {
 
-	private Integer numeroEmpleado;
+	private Integer numeroUsuario;
     private String usuario;
     private String password;
     private Boolean vigencia;
@@ -11,20 +11,20 @@ public class UsuarioBean {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public UsuarioBean(Integer numeroEmpleado, String usuario, String password, Boolean vigencia, String perfil) {
+	public UsuarioBean(Integer numeroUsuario, String usuario, String password, Boolean vigencia, String perfil) {
 		super();
-		this.numeroEmpleado = numeroEmpleado;
+		this.numeroUsuario = numeroUsuario;
 		this.usuario = usuario;
 		this.password = password;
 		this.vigencia = vigencia;
 		this.perfil = perfil;
 	}
 	
-	public Integer getNumeroEmpleado() {
-		return numeroEmpleado;
+	public Integer getNumeroUsuario() {
+		return numeroUsuario;
 	}
-	public void setNumeroUsuario(Integer numeroEmpleado) {
-		this.numeroEmpleado = numeroEmpleado;
+	public void setNumeroUsuario(Integer numeroUsuario) {
+		this.numeroUsuario = numeroUsuario;
 	}
 	public String getUsuario() {
 		return usuario;
@@ -52,9 +52,12 @@ public class UsuarioBean {
 	}
 	@Override
 	public String toString() {
-		return "UsuarioBean [numeroEmpleado=" + numeroEmpleado + ", usuario=" + usuario + ", password=" + password
+		return "UsuarioBean [numeroEmpleado=" + numeroUsuario + ", usuario=" + usuario + ", password=" + password
 				+ ", vigencia=" + vigencia + ", perfil=" + perfil + "]";
 	}
 	
-	
+	public String salidaArchivoPlano() {
+		return numeroUsuario + "|" + usuario + "|" + password + "|" + (vigencia ? "1" : "0") + "|" +
+				perfil +  "\n";
+	}
 }

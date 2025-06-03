@@ -18,7 +18,7 @@ public class EmpleadoService {
 
 	//Agreguemos los métodos con las funcionalidades
 		//Agregar empleados
-		public List<EmpleadoBean> cargarEmpleados(){
+	/*	public List<EmpleadoBean> cargarEmpleados(){
 			List<EmpleadoBean> empleadosBean = new ArrayList<>();
 			
 			EmpleadoBean empleadoBean1 = new EmpleadoBean(generarNumEmpleado(), "Andres", "Garcia", "Gonzalez", "10/12/1990", "Admistrativo", "Operaciones", "M", "15/04/2025", 10000, true);
@@ -31,9 +31,9 @@ public class EmpleadoService {
 			return empleadosBean;
 			
 			
-		}
+		}*/
 		
-		private Integer generarNumEmpleado() {
+		/*private Integer generarNumEmpleado() {
 			DecimalFormat fmtAleatorio = new DecimalFormat("0000");
 			DecimalFormat fmtMes = new DecimalFormat("00");
 			Calendar calendar = Calendar.getInstance();
@@ -48,7 +48,7 @@ public class EmpleadoService {
 			//Convertir Integer -> String: String.valueOf(numEmpladoFinal);
 			
 			return numEmpladoFinal;
-		}
+		}*/
 		
 		
 		//Mostrar empleados

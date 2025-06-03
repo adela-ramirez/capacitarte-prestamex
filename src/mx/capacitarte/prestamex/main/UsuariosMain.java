@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import mx.capacitarte.prestamex.beans.ClienteBean;
+import mx.capacitarte.prestamex.beans.EmpleadoBean;
 import mx.capacitarte.prestamex.beans.UsuarioBean;
 import mx.capacitarte.prestamex.service.ClienteService;
 import mx.capacitarte.prestamex.service.UsuarioService;
@@ -15,13 +16,7 @@ public class UsuariosMain {
 		// TODO Auto-generated method stub
 
 		System.out.println("Inicia programa");
-
-		System.out.println("Cargando usuarios...");
-		UsuarioService usuarioService = new UsuarioService();
-		List<UsuarioBean> usuariosCargados = usuarioService.cargarUsuarios();
-		System.out.println("Termina carga de usuarios");
-		
-		
+		List<UsuarioBean> usuariosCargados = new ArrayList<>();//empleadoService.cargarEmpleados();
 		
 		mostrarMenu(usuariosCargados);
 		
@@ -44,7 +39,8 @@ public class UsuariosMain {
 		System.out.println("1.- Buscar por nombre");
 		System.out.println("2.- Buscar por número de usuario");
 		System.out.println("3.- Validar Usuario y contraseña");
-		System.out.println("4.- Salir");
+		System.out.println("4.- Agregar Usuario");
+		System.out.println("5.- Salir");
 		Scanner scanner = new Scanner(System.in);
 		int opcionElegida = scanner.nextInt();
 		List<UsuarioBean> usuariosEncontrados = new ArrayList<>();
@@ -54,7 +50,7 @@ public class UsuariosMain {
 			System.out.println("Nombre buscar:");
 			String nombreBuscar = scanner.next();
 			System.out.println("Iniciando busqueda del nombre: " + nombreBuscar);
-			usuariosEncontrados = usuarioService.buscarUsuariosPorNombre(usuariosCargados, nombreBuscar);
+			usuariosEncontrados = usuarioService.buscarUsuariosPorNombre(nombreBuscar);
 			usuarioService.mostrarUsuarios(usuariosEncontrados);
 			break;	
 		case 2:
@@ -65,7 +61,7 @@ public class UsuariosMain {
             } catch (Exception e) {
                 System.out.println("Ocurrió una excepcion");
             }
-			usuariosEncontrados = usuarioService.buscarUsuario(usuariosCargados, numeroUsuario);
+			usuariosEncontrados = usuarioService.buscarUsuario(numeroUsuario);
 			usuarioService.mostrarUsuarios(usuariosEncontrados);
 			break;
 		case 3:
@@ -73,10 +69,33 @@ public class UsuariosMain {
 			String nombreUsuarioBuscar = scanner.next();
 			System.out.println("ingresa password:");
 			String passwordBuscar = scanner.next();
-			usuariosEncontrados = usuarioService.validarUsuario(usuariosCargados, nombreUsuarioBuscar, passwordBuscar);
+			usuariosEncontrados = usuarioService.validarUsuario(nombreUsuarioBuscar, passwordBuscar);
 			usuarioService.mostrarUsuarios(usuariosEncontrados);
 			break;	
 		case 4:
+			System.out.println("ingrese el número de Usuario");
+			Integer numUsuario = scanner.nextInt();
+			System.out.println("ingrese el nombre del usuario");
+			String usuario = scanner.next();
+			System.out.println("ingrese password");
+			String password = scanner.next();
+			System.out.println("vigencia");
+			String vigencia = scanner.next();
+			System.out.println("ingrese perfil");
+			String perfil = scanner.next();
+			
+			UsuarioBean usuarioAgregar = new UsuarioBean();
+			usuarioAgregar.setNumeroUsuario(numUsuario);
+			usuarioAgregar.setUsuario(usuario);
+			usuarioAgregar.setPassword(password);
+			usuarioAgregar.setVigencia(vigencia.equals("1") ? true : false);
+			usuarioAgregar.setPerfil(perfil);
+			
+			Boolean respuesta = usuarioService.agregarUsuarios(usuarioAgregar);
+			System.out.println(respuesta ? "El usuario fue agregado correctamente" : "Ocurrió un error al agregar al cliente");
+			
+			break;
+		case 5:
 			System.out.println("Termina programa");
 			System.exit(0);
 		default:
