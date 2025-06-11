@@ -146,5 +146,9 @@ public class EmpleadoBean {
 		    "\n\n";
     	
     }
-
+    
+    public String salidaArchivoPlano() {
+		return numeroEmpleado + "|" + nombre + "|" + apellidoPaterno + "|"+ apellidoMaterno + "|"+ fechaNacimiento + "|"+ departamento +"|"+ puesto + "|"+ genero + "|"+ fechaIngreso + "|"+ sueldo + "|" + (vigencia ? "1" : "0") + "\n";
+	}
+    
 }

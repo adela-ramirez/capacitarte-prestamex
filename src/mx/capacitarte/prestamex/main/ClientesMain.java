@@ -12,8 +12,6 @@ import mx.capacitarte.prestamex.service.EmpleadoService;
 public class ClientesMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
 		System.out.println("Inicia programa");
 
 		System.out.println("Cargando clientes...");

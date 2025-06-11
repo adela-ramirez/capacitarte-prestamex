@@ -2,11 +2,14 @@ package mx.capacitarte.prestamex.files;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import mx.capacitarte.prestamex.beans.ClienteBean;
 import mx.capacitarte.prestamex.beans.EmpleadoBean;
 import mx.capacitarte.prestamex.commons.Constantes;
 
@@ -58,6 +61,31 @@ public class EmpleadosFiles {
 		return empleados;
 	}
 
-	// agregar empleado a archivo empleados
+	public Boolean agregarEmpleado(EmpleadoBean empleadoNuevoBean) {
+	System.out.println("Recuperando a todos los empleados actuales en el archivo");
+	List<EmpleadoBean> empleadosActuales = leerArchivoEmpleados();
+	
+	//Agregar cliente nuevo a la lista de clientes actuales: 2
+	System.out.println("Agregando empleado nuevo a la lista");
+	empleadosActuales.add(empleadoNuevoBean);
+	
+	//Escribir en el archivo
+	try {
+		FileWriter myWriter = new FileWriter(Constantes.RUTA_ARCHIVO_PRESTAMEX_EMPLEADOS);
+		
+		for (EmpleadoBean empleadoBean : empleadosActuales) {
+			System.out.println(":::: Agregando empleado");
+			myWriter.write(empleadoBean.salidaArchivoPlano());
+		}
+		System.out.println("Terminó de agregar empleado al archivo");
+		myWriter.close();
+	}catch (IOException e) {
+		System.out.println("a ocurrido una excepcion");
+		e.printStackTrace();
+		return false;
+	}
+	
+	return true;
+}
 
 }

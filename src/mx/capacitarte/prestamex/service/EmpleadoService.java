@@ -3,7 +3,9 @@ package mx.capacitarte.prestamex.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import mx.capacitarte.prestamex.beans.ClienteBean;
 import mx.capacitarte.prestamex.beans.EmpleadoBean;
+import mx.capacitarte.prestamex.files.ClientesFiles;
 import mx.capacitarte.prestamex.files.EmpleadosFiles;
 
 public class EmpleadoService {
@@ -118,5 +120,15 @@ public class EmpleadoService {
 			}
 			
 			return empleadosCoincidentes;
+		}
+		
+		public Boolean agregarEmpleados(EmpleadoBean empleadoBean) {
+			EmpleadosFiles empleadosFiles = new EmpleadosFiles();
+			Boolean resultadoAgregarEmpleado = empleadosFiles.agregarEmpleado(empleadoBean);
+
+			System.out.println("El resultado de agregar cliente fue: " + resultadoAgregarEmpleado);
+
+			return resultadoAgregarEmpleado;
+
 		}
 }

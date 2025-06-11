@@ -31,9 +31,9 @@ public class ClienteService {
 			return;
 		}
 
-		System.out.println("Los clientes son:");
+		System.out.println(clientes.size() == 1 ? "\nEl cliente encontrado es:" : "\nLos clientes encontrados son:");
 		for (ClienteBean clienteBean : clientes) {
-			System.out.println(clienteBean.toString());
+			System.out.println(clienteBean.mostraInfoCliente());
 		}
 		System.out.println("=============================================");
 

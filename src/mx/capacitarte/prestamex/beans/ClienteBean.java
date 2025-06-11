@@ -107,10 +107,22 @@ public class ClienteBean {
 				+ correoElectronico + ", domicilio=" + domicilio + ", vigencia=" + vigencia + "]";
 	}
 	
+	public String mostraInfoCliente() {
+    	return 
+		    "Numero de cliente: " + numeroCliente +
+		    "\nNombre cliente:    " + nombre + " " + apellidoPaterno + " " + apellidoMaterno +
+		    "\nFecha de nacimiento: " + fechaNacimiento +
+		    "\nGenero:             " + (genero.equals("F") ? "FEMENINO" : genero.equals("M") ? "MASCULINO" : " ") + 
+		    "\nRfc:             " + rfc + 
+		    "\nTelefono:             " + telefono + 
+		    "\nCorreo electronico:   " + correoElectronico +
+		    "\nDomicilio:     " + domicilio +
+		    "\nVigencia:           " + (vigencia ? "Vigente" : "No Vigente") + 
+		    "\n\n";
+    	
+    }
 	public String salidaArchivoPlano() {
-		return numeroCliente + "|" + nombre + "|" + apellidoPaterno + "|" + apellidoMaterno + "|" +
-				fechaNacimiento + "|" + genero + "|" + rfc + "|" + telefono + "|" + correoElectronico + "|" +
-				domicilio + "|" + (vigencia ? "1" : "0") + "\n";
+		return numeroCliente + "|" + nombre + "|" + apellidoPaterno + "|"+ apellidoMaterno + "|"+ fechaNacimiento + "|"+ genero + "|"+ rfc + "|"+ telefono + "|"+ correoElectronico + "|"+ domicilio + "|" + (vigencia ? "1" : "0") + "\n";
 	}
 	
 }
